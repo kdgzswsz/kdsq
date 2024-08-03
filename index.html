@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好康的~</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .modal h2 {
+            margin: 0 0 20px;
+        }
+        .modal button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+        }
+        .modal button:hover {
+            background-color: #0056b3;
+        }
+        .message, .loading, .custom-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1001;
+        }
+        .loading .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #007bff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .custom-popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+        }
+        .custom-popup button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="ageModal">
+        <div class="modal">
+            <h2>该网页含有严重的色情信息，请确认您已经满18岁！</h2>
+            <button onclick="showLoading()">已满</button>
+            <button onclick="notOldEnough()">未满</button>
+        </div>
+    </div>
 
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>加载中...</p>
+    </div>
+
+    <div class="custom-popup" id="customPopup">
+        <p>访问色情网站不仅违反社会道德，也会对个人的心理健康产生负面影响。这种行为不仅有悖于我们对自我尊重的要求，还可能导致道德观念的扭曲和社会责任感的缺失。我希望你能够深刻认识到这一点，重新审视自己的行为，避免这种不良习惯。我希望通过这样可以使你不再访问这种网站，但是这种方法并不能消除根源，所以你想看就点确定吧，我也无能为力了。</p>
+        <button onclick="redirectToWebsite()">确认</button>
+    </div>
+
+    <script>
+        function notOldEnough() {
+            document.querySelector('.overlay').style.display = 'none';
+            const loadingDiv = document.getElementById('loading');
+            loadingDiv.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'https://ckim.czoffice.top';
+            }, 1000);
+        }
+
+        function showLoading() {
+            document.querySelector('.overlay').style.display = 'none';
+            const loadingDiv = document.getElementById('loading');
+            loadingDiv.style.display = 'block';
+            setTimeout(() => {
+                loadingDiv.style.display = 'none';
+                document.getElementById('customPopup').style.display = 'block';
+            }, 2000); // Adjust delay as needed
+        }
+
+        function redirectToWebsite() {
+            document.getElementById('customPopup').style.display = 'none';
+            const loadingDiv = document.getElementById('loading');
+            loadingDiv.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'https://www.bilibili.com/video/BV1e9vQeHEk5/?pop_share=1&vd_source=cfe6fb5eca1d4c3259902516c2f7d7b4';
+            }, 5000); // 5 seconds delay before redirecting
+        }
+    </script>
+</body>
+</html>
